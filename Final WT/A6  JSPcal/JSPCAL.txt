@@ -1,0 +1,77 @@
+
+--------NewFile.html---------
+
+
+<!DOCTYPE html>
+<html>
+<title>calculator</title>
+<head><h1><center>Basic Calculator</center></h1></head>
+<body>
+<center>
+<form action="NewFile.jsp" method="get">
+
+<label for="num1"><b>Number 1</b></label>
+<input type="text" name ="num1"><br><br>
+<label for = "num2"><b>Number 2</b></label>
+<input type="text" name="num2"><br><br>
+
+<input type ="radio" name = "r1" value="Add">+ 
+<input type = "radio" name = "r1" value="Sub">-<br>
+<input type="radio" name="r1" value ="mul">* 
+<input type = "radio" name="r1" value="div">/<br><br>
+
+<input type="submit" value="submit">
+</center>
+
+</body>
+</html>
+
+
+
+
+--------NewFile.JSP-------------
+
+
+<html>
+<title>calculator</title>
+<head></head>
+<body>
+<%@page language="java"%>    <%-- comment <%@(directive):direction to JSP container  --%>
+
+ 
+   <%-- comment <% (Scriptlet): executed whed client requet is processed by JSP  --%>
+	
+	
+	<%
+	float num1 = Float.parseFloat(request.getParameter("num1"));
+	float num2 = Float.parseFloat(request.getParameter("num2"));
+	
+	String operation = request.getParameter("r1");
+	
+		if(operation.equals("Add")){
+			float add=num1+num2;
+			out.println("Addition is: "+add);
+		}
+		else if(operation.equals("Sub")){
+		
+			float sub=num1-num2;
+			out.println("Substraction is: "+sub);
+		}
+		else if(operation.equals("mul")){
+			float mul=num1*num2;
+			out.println("multiplication is: "+mul);
+		}
+		else if(operation.equals("div"))
+		{
+			float div = num1/num2;
+		
+
+
+             	if(num2 == 0)
+				out.println("INFINITY");
+			else
+				out.println("division is: "+div);
+		}
+%>
+</body>
+</html>
